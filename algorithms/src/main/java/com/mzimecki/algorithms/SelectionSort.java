@@ -3,6 +3,10 @@ package com.mzimecki.algorithms;
 /**
  * Selection sort implementation example O(n^2).
  * 
+ * 1. Select minimum element and swap it with 1st one.
+ * 2. Select minimum element starting from 2nd and swap it with 2nd one.
+ * 3. Continue while array is sorted.
+ * 
  * @author M. Zimecki
  */
 public class SelectionSort {
