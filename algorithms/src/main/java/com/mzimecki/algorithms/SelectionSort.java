@@ -17,13 +17,16 @@ public class SelectionSort {
 			for (int j = i + 1; j < a.length; j++) {
 				if (a[j] < a[min]) {
 					min = j;
-					int tmp = a[i];
-					a[i] = a[min];
-					a[min] = tmp;
+					exchange(a, min, i);
 				}
 			}
 		}
 		return a;
 	}
-
+	
+	private static void exchange(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+	}
 }
