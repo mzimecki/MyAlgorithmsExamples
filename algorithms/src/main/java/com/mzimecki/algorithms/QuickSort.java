@@ -13,40 +13,34 @@ package com.mzimecki.algorithms;
  */
 public class QuickSort {
 
-	public int[] sort(int[] a) {
-		if (a.length > 1) {
-			return quicksort(a, 0, a.length - 1);
-		}
-		return a;
-	}
-	
-	private int[] quicksort(int a[], int l, int r) {
-		int i = l;
-		int j = r;
-		int pivot = a[l + (r - l)/2];
-		do {
-			while (a[i] < pivot)
-				i++;
-			while (a[j] > pivot)
-				j--;
-			if (i <= j) {
-				exchange(a, i, j);
-				i++;
-				j--;
-			}
-		} while (i <= j);
-		if (l < j) {
-			quicksort(a, l, j);
-		}
-		if (i < r) {
-			quicksort(a, i, r);
-		}
-		return a;
-	}
-	
-	private void exchange(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-	}
+	public int [] sort(int [] list, int l, int r) {
+        if (r <= l) {
+            return list;
+        }
+        
+        int q = partition(list, l, r);
+        sort(list, l, q - 1);
+        sort(list, q + 1, r);
+        return list;
+    }
+    
+    private int partition(int [] list, int left, int right) {
+        long pivot = list[left];
+        int pivotIdx = left;
+     
+        for(int j = left + 1; j <= right; j++)
+            if(list[j] <= pivot) {
+                pivotIdx = pivotIdx + 1;
+                swap(list, pivotIdx, j);
+            }
+        swap(list, pivotIdx, left);
+        return pivotIdx;
+    }
+    
+    private void swap(int [] list, int i, int j) {
+        int tmp = list[i];
+        list[i] = list[j];
+        list[j] = tmp;
+    }
+    
 }
